@@ -1,0 +1,33 @@
+{
+  "id": "home",
+  "type": "SharedSlice",
+  "name": "Home",
+  "description": "Home",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "username": {
+          "type": "Text",
+          "config": {
+            "label": "username",
+            "placeholder": ""
+          }
+        },
+        "password": {
+          "type": "Text",
+          "config": {
+            "label": "password",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
