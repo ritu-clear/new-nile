@@ -4,71 +4,71 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BannerDocumentDataSlicesSlice = never;
+type FooterDocumentDataSlicesSlice = never;
 
 /**
- * Content for Banner documents
+ * Content for footer documents
  */
-interface BannerDocumentData {
+interface FooterDocumentData {
   /**
-   * img field in *Banner*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: banner.img
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  img: prismic.ImageField<never>;
-
-  /**
-   * Title field in *Banner*
+   * Title field in *footer*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: banner.title
+   * - **API ID Path**: footer.title
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
 
   /**
-   * Slice Zone field in *Banner*
+   * subtitle field in *footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *footer*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: banner.slices[]
+   * - **API ID Path**: footer.slices[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<BannerDocumentDataSlicesSlice> /**
-   * Meta Title field in *Banner*
+  slices: prismic.SliceZone<FooterDocumentDataSlicesSlice> /**
+   * Meta Title field in *footer*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: banner.meta_title
+   * - **API ID Path**: footer.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */;
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *Banner*
+   * Meta Description field in *footer*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: banner.meta_description
+   * - **API ID Path**: footer.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Banner*
+   * Meta Image field in *footer*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: banner.meta_image
+   * - **API ID Path**: footer.meta_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
@@ -76,20 +76,16 @@ interface BannerDocumentData {
 }
 
 /**
- * Banner document from Prismic
+ * footer document from Prismic
  *
- * - **API ID**: `banner`
- * - **Repeatable**: `false`
+ * - **API ID**: `footer`
+ * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type BannerDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<BannerDocumentData>,
-    "banner",
-    Lang
-  >;
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
 
 /**
  * Content for homepage documents
@@ -116,6 +112,17 @@ interface HomepageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
+  /**
+   * para field in *homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.para
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  para: prismic.KeyTextField;
 }
 
 /**
@@ -173,7 +180,7 @@ interface TestDocumentData {
 export type TestDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<TestDocumentData>, "test", Lang>;
 
-export type AllDocumentTypes = BannerDocument | HomepageDocument | TestDocument;
+export type AllDocumentTypes = FooterDocument | HomepageDocument | TestDocument;
 
 /**
  * Primary content in *Home → Default → Primary*
@@ -248,9 +255,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      BannerDocument,
-      BannerDocumentData,
-      BannerDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
+      FooterDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,
       TestDocument,

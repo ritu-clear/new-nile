@@ -22,12 +22,10 @@ export default function Banner()
     fetchData()
   }, []);
     return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      
-     
-      <section className="hero-banner pt-10 relative min-h-[300px]  top-0" >
-        <div className="container">
-<div className="bg-img relative left-0 top-0 w-full h-full ">
+   
+<section className="hero-banner pt-10 relative min-h-[300px]  top-0" >
+
+<div className="bg-img absolute left-0 top-0 w-full h-full ">
 
   
 
@@ -41,11 +39,39 @@ export default function Banner()
                             />
                         ) : null}
 </div>
+<div className="container">
+<div className="flex row grid-cols-[58%_42%] gap-24 items-end ">
+
+
+<div className='px-10px  mb-[40px] '>
+
+<p className='leading-[1.5] text-[14px] uppercase text-[#ff0092] font-bold flex flex-wrap my-[20px]'>
+<span className='mr-[10px]'>
+<Image
+              src={"/images/line_gradient.png"}
+              width={16}
+              height={13}
+              loading="eager"
+              alt="Hero pattern Image"
+              className="h-full w-full object-contain "
+            />
+</span>
+     THE NEW WIRED AND WIRELESS LAN
+</p>
+<h1 className='leading-[1.1] text-[50px] uppercase text-[white]'>{document?.label} </h1>
 </div>
+<div className='px-10px  mb-[40px] '>
+  <p className=' leading-[1.5] text-[14px] uppercase text-[#ffffff] my-[20px]'>
+  {document?.para} new
+  </p>
+</div>
+</div>
+</div>
+
 </section>
     
     
-    </div>
+   
   );
 }
 

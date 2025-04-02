@@ -26,6 +26,13 @@
           "label": "label",
           "placeholder": ""
         }
+      },
+      "para": {
+        "type": "Text",
+        "config": {
+          "label": "para",
+          "placeholder": ""
+        }
       }
     }
   }
